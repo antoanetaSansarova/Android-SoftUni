@@ -117,9 +117,24 @@ public class FirstActivity extends AppCompatActivity implements View.OnClickList
                 break;
             }
             case R.id.tv_btnIds:{
+
+                String componentId = "0";
+                String componentName= "0";
+
+                if(tvBtnId.getText().equals(String.valueOf(btn1.getId())) || tvBtnId.getText().equals(btn1.getText())){
+                    componentId = String.valueOf(btn1.getId());
+                    componentName = btn1.getText().toString();
+                }else if(tvBtnId.getText().equals(String.valueOf(btn2.getId())) || tvBtnId.getText().equals(btn2.getText())){
+                    componentId = String.valueOf(btn2.getId());
+                    componentName = btn2.getText().toString();
+                }else if(tvBtnId.getText().equals(String.valueOf(btn3.getId())) || tvBtnId.getText().equals(btn3.getText())){
+                    componentId = String.valueOf(btn3.getId());
+                    componentName = btn3.getText().toString();
+                }
+
                 Intent startSecondActivityIntent = new Intent(FirstActivity.this,SecondActivity.class);
-                startSecondActivityIntent.putExtra(COMPONENT_ID,String.valueOf(tvBtnId.getId()));
-                startSecondActivityIntent.putExtra(COMPONENT_NAME, TextView.class.getSimpleName());
+                startSecondActivityIntent.putExtra(COMPONENT_ID,componentId);
+                startSecondActivityIntent.putExtra(COMPONENT_NAME, componentName);
                 startActivity(startSecondActivityIntent);
                 break;
             }
